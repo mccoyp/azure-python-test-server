@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Emit Scratch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/packages/typespec-pydantic/node_modules/@typespec/compiler/entrypoints/cli.js",
+      "args": ["compile", "${workspaceFolder}/packages/samples/scratch/main.tsp"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Generate e2e",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/packages/typespec-pydantic/node_modules/@typespec/compiler/entrypoints/cli.js",
+      "args": ["compile", "${workspaceFolder}/packages/typespec-pydantic/test/e2e/namespaces/main.tsp"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Python-Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/packages/typespec-pydantic/node_modules/@typespec/compiler/entrypoints/cli.js",
+      "args": ["compile", "${workspaceFolder}/packages/samples/scratch/main.tsp"]
+    }
+  ]
+}

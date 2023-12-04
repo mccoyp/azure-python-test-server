@@ -1,0 +1,61 @@
+{
+  "name": "typespec-pydantic-monorepo",
+  "private": true,
+  "version": "1.0.0-beta.1",
+  "description": "Monorepo for typespec-pydantic",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "watch": "tsc --build ./tsconfig.ws.json --watch",
+    "build": "pnpm -r run build",
+    "clean": "rimraf ./tsp-output && pnpm -r run clean",
+    "purge": "rimraf ./node_modules ./tsp-output && pnpm -r run purge",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r run test",
+    "format": "npm run -s prettier -- --write",
+    "check-format": "npm run -s prettier -- --check",
+    "check-version-mismatch": "syncpack list-mismatches",
+    "fix-version-mismatch": "syncpack fix-mismatches",
+    "prettier": "prettier --config ./.prettierrc.yaml **/*.{ts,js,cjs,mjs,json,yml,yaml,md,tsp}",
+    "cspell": "cspell \"**/*.md\" \"**/*.ts\" \"**/*.tsp\"",
+    "prepare-publish": "pnpm changeset version",
+    "pr-prep": "pnpm validate-scenarios && pnpm validate-mock-apis && pnpm generate-scenarios-summary && pnpm format && pnpm cspell"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=7.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjprescott/typespec-pydantic.git"
+  },
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjprescott/typespec-pydantic/issues"
+  },
+  "homepage": "https://github.com/tjprescott/typespec-pydantic",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@typespec/prettier-plugin-typespec": "~0.50.0",
+    "cspell": "^7.3.9",
+    "eslint": "^8.55.0",
+    "eslint-plugin-import": "^2.29.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "syncpack": "^11.2.1",
+    "typescript": "^5.3.3"
+  },
+  "syncpack": {
+    "dependencyTypes": [
+      "dev",
+      "overrides",
+      "peer",
+      "pnpmOverrides",
+      "prod",
+      "resolutions"
+    ]
+  }
+}
